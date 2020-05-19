@@ -1,22 +1,56 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/register',
+    name: 'Register',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // this generates a separate chunk (about.[hash].js) for this route      // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Register" */ '../views/Register.vue')
+  },
+  {
+    path: '/content',
+    name: 'Content',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route      // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Content" */ '../views/Content.vue'),
+    children:[
+      {
+        path: '/home',
+        name: 'Home',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route      // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
+      },
+      {
+        path: '/group',
+        name: 'Group',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route      // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "Group" */ '../views/Groups.vue')
+      },
+      {
+        path: '/mygroup/:id',
+        name: 'MyGroup',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route      // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "Group" */ '../views/MyGroup.vue'),
+        props: true
+      }
+    ]
+  },
+  { 
+    path: "*",
+    name: '404',
+    component:()=> import('../views/404.vue')
   }
 ]
 
