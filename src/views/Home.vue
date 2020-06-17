@@ -49,9 +49,9 @@ export default {
         method: 'GET',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: null,
-        url:'http://192.168.1.5:8000/chat',
+        url:this.$store.state.ip+'/chat',
       }).then(val=>{
-        console.log(val);
+        //console.log(val);
         if(val.data.message!='no existen mensajes'){
           this.data=val.data;
         }
@@ -62,7 +62,7 @@ export default {
   },
   created(){
     this.$options.sockets.groups=(dt=>{
-      console.log('llega el socket');
+      //console.log('llega el socket');
       
       this.listas();
     });

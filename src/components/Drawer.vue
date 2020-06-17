@@ -81,6 +81,7 @@ export default {
             localStorage.removeItem('nick');
             localStorage.removeItem('idUser');
             localStorage.removeItem('token');
+            localStorage.removeItem('stream');
             this.$router.push('/');
         }
     },

@@ -127,7 +127,7 @@ export default {
                     method: 'POST',
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                     data: qs.stringify(datos),
-                    url:'http://192.168.1.5:8000/chat',
+                    url:this.$store.state.ip+'/chat',
                 }).then(val=>{
                     if(val.data.message!='error'){
                         this.$socket.emit('upGroups',null);

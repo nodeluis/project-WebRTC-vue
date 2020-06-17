@@ -213,7 +213,7 @@ export default {
                 method: 'POST',
                 headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 data: qs.stringify(datos),
-                url:'http://192.168.1.5:8000/user',
+                url:this.$store.state.ip+'/user',
             }).then(dat=>{
                 this.restMessage=dat.data.message;
                 this.dialog=true;
@@ -242,7 +242,7 @@ export default {
             method: 'POST',
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: qs.stringify({email:this.email}),
-            url:'http://192.168.1.5:8000/user/emailv',
+            url:this.$store.state.ip+'/user/emailv',
         }).then(dat=>{
             if(dat.data.val){
                 this.restMessage2='El email ya se registro.'
@@ -258,7 +258,7 @@ export default {
             method: 'POST',
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: qs.stringify({nick:this.nick}),
-            url:'http://192.168.1.5:8000/user/nickv',
+            url:this.$store.state.ip+'/user/nickv',
         }).then(dat=>{
             if(dat.data.val){
                 this.restMessage2='Ya existe un usuario con el mismo nick.'

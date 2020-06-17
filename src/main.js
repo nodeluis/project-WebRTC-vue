@@ -5,23 +5,13 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import Axios from 'axios';
 import VueAxios from 'vue-axios';
+import VueSocketio from 'vue-socketio';
 
 Vue.use(VueAxios, Axios);
 
 Vue.config.productionTip = false;
 
-import VueSocketIO from 'vue-socket.io';
- 
-Vue.use(new VueSocketIO({
-    debug: true,
-    connection: 'http://192.168.1.5:8000',
-    vuex: {
-        store,
-        actionPrefix: 'SOCKET_',
-        mutationPrefix: 'SOCKET_'
-    },
-    //options: { path: "/my-app/" } //Optional options
-}));
+Vue.use(VueSocketio, 'http://192.168.1.7:8000');
 
 new Vue({
   router,

@@ -106,7 +106,7 @@ export default {
               method: 'POST',
               headers: { 'content-type': 'application/x-www-form-urlencoded' },
               data: qs.stringify({email:this.name,password:this.pass}),
-              url:'http://192.168.1.5:8000/user/login',
+              url:this.$store.state.ip+'/user/login',
           }).then(val=>{
               if(val.data.message=='Bienvenido'){
                 localStorage.setItem('name',val.data.user.nombre);
