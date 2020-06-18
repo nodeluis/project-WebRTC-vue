@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     drawer:null,
     user:localStorage.getItem('user'),
-    ip:'http://192.168.1.7:8000'
+    ip:'https://service-stream-sis719.herokuapp.com'
   },
   mutations: {
     DRAWER(state,payload){

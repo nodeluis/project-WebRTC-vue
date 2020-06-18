@@ -83,7 +83,7 @@ export default {
             localStorage.removeItem('token');
             localStorage.removeItem('stream');
             this.$router.push('/');
-        }
+        },
     },
     created(){       
         this.name=localStorage.getItem('name');

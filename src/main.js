@@ -11,7 +11,7 @@ Vue.use(VueAxios, Axios);
 
 Vue.config.productionTip = false;
 
-Vue.use(VueSocketio, 'http://192.168.1.7:8000');
+Vue.use(VueSocketio, 'https://service-stream-sis719.herokuapp.com');
 
 new Vue({
   router,

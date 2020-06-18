@@ -11,7 +11,7 @@ export default {
     },
     props: ['id'],
     created(){
-        if(this.id=='5ee6cbcdc897e9003b234d6a'){
+        if(this.id=='5eeac798c2c3dd00176de42a'){
             localStorage.setItem('stream',true);
             this.$router.push('/stream');
         }

@@ -1,15 +1,25 @@
 <template>
     <v-container>
+        <chat/>
         <v-btn @click="conectar">{{connect}}</v-btn>
-        <v-btn @click="pers"></v-btn>
-        <v-btn v-for="(item,index) in escucha" :key="index+1000">{{item}}</v-btn>
-        <video controls autoplay v-for="(item,index) in streams" :key="index" :srcObject.prop="item.stream"></video>
+        <video 
+            controls 
+            autoplay 
+            v-for="(item,index) in streams" 
+            :key="index" 
+            :srcObject.prop="item.stream"
+            :class="['mx-auto','-webkit-full-screen','-moz-full-screen','fullscreen']"
+            width="100%"
+            height="400"
+        >
+        </video>
     </v-container>
 </template>
 
 <script>
 
 import Peer from 'simple-peer'
+import chat from '@/components/Chat'
 
 export default {
     data(){
@@ -22,6 +32,9 @@ export default {
             peersListen:[],
             streams:[]
         }
+    },
+    components:{
+        chat:chat
     },
     sockets:{
         connect() {
@@ -71,12 +84,15 @@ export default {
                            || navigator.msGetUserMedia);
                 
                 const gdmOptions = {
-                    video: {
-                        cursor: "always",
-                        width:800,
-                        height:400
+                    width: {
+                        min: 320,
+                        max: 1280
                     },
-                }
+                    height: {
+                        min: 240,
+                        max: 720
+                    }
+                };
                 const stream = await navigator.mediaDevices.getDisplayMedia(gdmOptions);
                 const stream2 = await navigator.mediaDevices.getUserMedia({audio:true});
                 const mediastream= new MediaStream();
@@ -102,10 +118,6 @@ export default {
                 this.peersSend=[];
                 this.connect='conectar';
             }
-        },
-        pers(){
-            console.log(this.peersSend);
-            console.log(this.peersListen);
         }
     },
     created(){
